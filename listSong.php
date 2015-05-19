@@ -11,7 +11,7 @@
     $result           	= null;
     $message          	= "Get schedule data success.";
 
-	$qry 				= mysql_query("SELECT id_song, song_title FROM table_song WHERE id_artist='".$id."'");
+	$qry 				= mysql_query("SELECT id_song, song_title, song_lyric FROM table_song WHERE id_artist='".$id."'");
 	$count 				= mysql_num_rows($qry);
 
 	if($count!=0){
@@ -23,7 +23,7 @@
 		while ($data = mysql_fetch_object($qry)) {
 			$result['id_song']		=$data->id_song;
 			$result['song_title']	=$data->song_title;
-			
+			$result['song_lyric'] 	=$data->song_lyric;
 			$returnData['result'][]=$result;
 		}	
 	}else{
