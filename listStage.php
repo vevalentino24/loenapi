@@ -29,15 +29,19 @@
 									FROM table_schedule s, table_icon i
 									WHERE s.icon = i.id 
 									AND s.stage = '".$data->id."'");
-			unset($result['isi']);
+			
+			$result['items'] = array();
+			$i=0;
 			while ($schedule = mysql_fetch_object($qry_scedule)) {
+				
 				$isi['id']		=$schedule->id;
 				$isi['urutan']	=$schedule->urutan;
 				$isi['name']	=$schedule->name;
 				$isi['time']	=$schedule->time;
 				$isi['stage']	=$schedule->stage;
 				$isi['icon']	=$schedule->file;
-				$result['items'][]	=$isi;
+				$result['items'][$i]	=$isi;
+				$i++;
 			}
 
 			$returnData['result'][]=$result;
