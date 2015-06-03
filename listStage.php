@@ -28,7 +28,7 @@
 			$qry_scedule 		= mysql_query("SELECT s.id, s.urutan, s.name, s.time, s.stage, i.file
 									FROM table_schedule s, table_icon i
 									WHERE s.icon = i.id 
-									AND s.stage = '".$data->id."'");
+									AND s.stage = '".$data->id."' ORDER BY s.urutan");
 			
 			$result['items'] = array();
 			$i=0;
